@@ -4,7 +4,7 @@ CREATE table posts(
     id int(11) primary key auto_increment,
     usuario_id int(11),
     titulo varchar(255),
-	texto varchar(255), 
+	texto varchar(2000), 
     criado_em timestamp DEFAULT CURRENT_TIMESTAMP
     
 );
@@ -15,3 +15,4 @@ CREATE table usuarios(
 	senha varchar(255), 
     criado_em timestamp DEFAULT CURRENT_TIMESTAMP
 );
+

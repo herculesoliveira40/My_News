@@ -33,7 +33,7 @@
 
                 if($this->usuarioModel->armazenar($dados)):
                 //  echo " <br> <h1> Cadastrado com sucesso </h1>";
-                    header("Location:" .URL . "/usuarios/cadastrar?sucesso");
+                    Url::redirecionar('usuarios/login?sucesso'); // header("Location:" .URL . "/usuarios/login?sucesso");
                 else:
                     die("Erro ao cadastrar ");                
 
@@ -52,7 +52,7 @@
             endif;
 
 
-            $this->view('usuarios/cadastrar');
+            $this->view('usuarios/cadastrar', $dados);
         }
 
 
@@ -89,7 +89,7 @@
             $_SESSION['usuario_id'] = $checarUsuario->id;
             $_SESSION['usuario_nome'] = $checarUsuario->nome;
             $_SESSION['usuario_email'] = $checarUsuario->email;
-            header("Location:" .URL . "/paginas/sobre?entrou");
+            Url::redirecionar('posts?entrou');
         }
       
         public function sair() {
@@ -98,7 +98,7 @@
             unset($_SESSION['usuario_email']);
 
             session_destroy();
-            header("Location:" .URL . "/usuarios/login?saiu");
+            Url::redirecionar('usuarios/login?saiu');
         }
     }
 ?>

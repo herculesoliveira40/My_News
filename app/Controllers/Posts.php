@@ -127,16 +127,19 @@
 
         public function deletar($id) {
             $id = (int)$id;
+            $post = $this->postModel->postId($id);
+            if(is_int($id) && ($post->usuario_id == $_SESSION['usuario_id'])): 
 
-            if(is_int($id)): 
                     if($this->postModel->apagar($id)):
                         Sessao::mensagem('post', ' Post deletado com sucesso', 'alert alert-success'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
                         Url::redirecionar('posts?deletado'); 
                     else:
-                        echo "Error ao deletar post";    
+                        echo "Error ao deletar";
                     endif;    
+                else:
+                    Sessao::mensagem('post', ' Error Você não criou o post, então pode deletar :/ ', 'alert alert-danger'); //echo " <br> <h1> Cadastrado com sucesso </h1>";
+                    Url::redirecionar('posts?nao_pode_apagar'); 
             endif;
-            var_dump($id);
         }
 
 

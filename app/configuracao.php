@@ -2,7 +2,7 @@
 
 define('APP', dirname(__FILE__));
 
-define('URL', 'http://localhost/proj');
+define('URL', 'http://localhost/my_news');
 
 define('APP_NOME', 'Curso PHP MVC');
 
